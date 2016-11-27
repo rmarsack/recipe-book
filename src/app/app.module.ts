@@ -14,7 +14,8 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item.component
     AppComponent,
     HeaderComponent,
     RecipesComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RecipeItemComponent
   ],
   imports: [
     BrowserModule,
