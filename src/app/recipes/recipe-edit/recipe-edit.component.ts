@@ -69,7 +69,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         ])
       })
     );
-  }
+  } 
 
   onRemoveItem(index: number) {
     (<FormArray>this.recipeForm.controls['ingredients']).removeAt(index);
