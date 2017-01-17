@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from "@angular/http";
 
 import { Recipe } from "./recipe";
 import { Ingredient } from "../shared";
@@ -14,7 +15,7 @@ export class RecipeService {
     new Recipe('Summer Salad', 'Okayish', 'http://ohmyveggies.com/wp-content/uploads/2013/06/the_perfect_summer_salad.jpg', [])
   ];
 
-  constructor() {}
+  constructor(private http: Http) {}
 
   getRecipes() {
     return this.recipes;
@@ -34,6 +35,18 @@ export class RecipeService {
 
   editRecipe(oldRecipe: Recipe, newRecipe: Recipe) {
     this.recipes[this.recipes.indexOf(oldRecipe)] = newRecipe;
+  }
+
+  storeData() {
+    const body = JSON.stringify(this.recipes);
+    const headers = new Headers({
+       'Content-Type': 'application/json'
+    });
+    return this.http.post('https://recipebook-3a638.firebaseio.com/recipes.json', body, {headers:headers});
+  }
+
+  fetchData() {
+    
   }
 
 }
